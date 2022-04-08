@@ -3,12 +3,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
+import org.openqa.selenium.support.PageFactory;
+import packageobjects.TutorialsPointPage;
 
 public class TestAssignmentClass {
 
@@ -16,52 +14,36 @@ public class TestAssignmentClass {
     public static final String URL = "https://www.tutorialspoint.com/index.htm";
     public static final String TITLE = "Biggest Online Tutorials Library";
 
+    private WebDriver driver;
+
     @Before
     public void setUp() {
-        System.out.println("Before each test.");
+        System.out.println("Setting up test environment.");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get(URL);
     }
 
     @After
     public void after() {
-        System.out.println("After each test.");
+        System.out.println("Finished testing, cleanup.");
+        driver.quit();
     }
 
     @Test
-    public void simpleTest() {
-        //set up driver for chrome
-        //the driver gives us access to all selenium actions
-        WebDriverManager.chromedriver().setup();
-        //if we wish to test in firefox, instead we use the following:
-        //WebDriverManager.firefoxdriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get(URL);
+    public void titleTest() {
         Assert.assertEquals(TITLE, driver.getTitle());
         Assert.assertNotEquals("YouTube", driver.getTitle());
     }
 
     @Test
-    public void testYouTubeSearch() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().fullscreen();
-        driver.get(URL);
-        WebElement searchField = driver.findElement(By.id("search-strings"));
-        searchField.sendKeys(SEARCH_TERM);
-        WebElement buttonSearch = driver.findElement(By.id("btnSearch"));
-        buttonSearch.click();
+    public void searchTest() {
+        TutorialsPointPage tutorialsPointPageObject = PageFactory.initElements(driver, TutorialsPointPage.class);
+        tutorialsPointPageObject.search(SEARCH_TERM);
+        tutorialsPointPageObject.click();
 
-        WebElement searchValueSpan = driver.findElement(By.id("search_value"));
-        String searchValueTest = searchValueSpan.getText();
-        Assert.assertTrue(searchValueTest.contains(SEARCH_TERM));
-
-        WebElement searchLoad = driver.findElement(By.id("load"));
-        Assert.assertEquals(6, searchLoad.getText().chars().filter(ch -> ch == '€').count());
-
-        //we should not forget this, especially in larger scale testing processes
-//        driver.quit();
-
-        List<WebElement> results = driver.findElements(By.xpath("//*[@id=\"ebooks_grid\"]/div"));
-        Assert.assertEquals(results.size(), 3);
-//        Thread.sleep(3000);
+        Assert.assertTrue(tutorialsPointPageObject.getSearchText().contains(SEARCH_TERM));
+        Assert.assertEquals(6, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
+        Assert.assertEquals(tutorialsPointPageObject.getGridSize(), 3);
     }
 }
