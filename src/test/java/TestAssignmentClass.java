@@ -8,7 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class YouTubeTest {
+import java.util.List;
+
+public class TestAssignmentClass {
 
     public static final String SEARCH_TERM = "JUnit";
     public static final String URL = "https://www.tutorialspoint.com/index.htm";
@@ -38,9 +40,10 @@ public class YouTubeTest {
     }
 
     @Test
-    public void testYouTubeSearch() {
+    public void testYouTubeSearch() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().fullscreen();
         driver.get(URL);
         WebElement searchField = driver.findElement(By.id("search-strings"));
         searchField.sendKeys(SEARCH_TERM);
@@ -53,5 +56,12 @@ public class YouTubeTest {
 
         WebElement searchLoad = driver.findElement(By.id("load"));
         Assert.assertEquals(6, searchLoad.getText().chars().filter(ch -> ch == '€').count());
+
+        //we should not forget this, especially in larger scale testing processes
+//        driver.quit();
+
+        List<WebElement> results = driver.findElements(By.xpath("//*[@id=\"ebooks_grid\"]/div"));
+        Assert.assertEquals(results.size(), 3);
+//        Thread.sleep(3000);
     }
 }
