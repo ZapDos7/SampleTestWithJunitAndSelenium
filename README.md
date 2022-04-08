@@ -16,3 +16,5 @@ The project was implemented in Ubuntu 18.04, using IntelliJ, and the test enviro
 - Java 17
 - [Selenium](https://www.selenium.dev/)
 - [bonigarcia's Web Driver Manager](https://github.com/bonigarcia/webdrivermanager)
+
+Instructor: [T. Lagonikas](https://www.linkedin.com/in/theodore-lagonikas/?trk=org-employees&originalSubdomain=gr)

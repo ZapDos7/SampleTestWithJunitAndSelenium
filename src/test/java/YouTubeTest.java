@@ -44,7 +44,6 @@ public class YouTubeTest {
         driver.get(URL);
         WebElement searchField = driver.findElement(By.id("search-strings"));
         searchField.sendKeys(SEARCH_TERM);
-        //Thread.sleep(5000);
         WebElement buttonSearch = driver.findElement(By.id("btnSearch"));
         buttonSearch.click();
 
