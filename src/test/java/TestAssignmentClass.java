@@ -37,13 +37,15 @@ public class TestAssignmentClass {
     }
 
     @Test
-    public void searchTest() {
+    public void searchTest() throws InterruptedException {
         TutorialsPointPage tutorialsPointPageObject = PageFactory.initElements(driver, TutorialsPointPage.class);
         tutorialsPointPageObject.search(SEARCH_TERM);
+        Thread.sleep(1000);
         tutorialsPointPageObject.click();
 
         Assert.assertTrue(tutorialsPointPageObject.getSearchText().contains(SEARCH_TERM));
         Assert.assertEquals(6, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
         Assert.assertEquals(tutorialsPointPageObject.getGridSize(), 3);
+        Thread.sleep(1000);
     }
 }
