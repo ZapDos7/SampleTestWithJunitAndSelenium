@@ -18,3 +18,15 @@ The project was implemented in Ubuntu 18.04, using IntelliJ, and the test enviro
 - [bonigarcia's Web Driver Manager](https://github.com/bonigarcia/webdrivermanager)
 
 Instructor: [T. Lagonikas](https://www.linkedin.com/in/theodore-lagonikas/?trk=org-employees&originalSubdomain=gr)
+
+### Notes
+
+#### Day 1
+- We setup a driver according to the test browser we use
+- `findElement(by...)` in order to find the DOM element of the HTML page (by: id, class, css selector etc)
+- `xpath` can be easily broken so it is not optimal in each case, use with caution
+
+#### Day 2
+- Better organisation with `packageobjects` POM classes: We use the same `findBy` means to get an item from our HTML page, however this is more volatile: in case the element is renamed in the HTML code, we need only change the corresponding annotation in our `packageobjects` class.
+- It is best to use `@Before` and `@After` above methods in order to define functionality done before and after each test session.
+- In larger test sessions especially, it is crucial to `webDriver.quit();` in order to ease the load of the testing machine.

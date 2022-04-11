@@ -13,6 +13,7 @@ public class TestAssignmentClass {
     public static final String SEARCH_TERM = "JUnit";
     public static final String URL = "https://www.tutorialspoint.com/index.htm";
     public static final String TITLE = "Biggest Online Tutorials Library";
+    public static final int times = 3;
 
     private WebDriver driver;
 
@@ -37,15 +38,13 @@ public class TestAssignmentClass {
     }
 
     @Test
-    public void searchTest() throws InterruptedException {
+    public void searchTest() {
         TutorialsPointPage tutorialsPointPageObject = PageFactory.initElements(driver, TutorialsPointPage.class);
         tutorialsPointPageObject.search(SEARCH_TERM);
-        Thread.sleep(1000);
         tutorialsPointPageObject.click();
 
         Assert.assertTrue(tutorialsPointPageObject.getSearchText().contains(SEARCH_TERM));
-        Assert.assertEquals(6, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
-        Assert.assertEquals(tutorialsPointPageObject.getGridSize(), 3);
-        Thread.sleep(1000);
+        Assert.assertEquals(2*times, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
+        Assert.assertEquals(tutorialsPointPageObject.getGridSize(), times);
     }
 }

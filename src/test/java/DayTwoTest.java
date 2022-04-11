@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import packageobjects.PlaygroundPage;
 
 public class DayTwoTest {
-    //2nd day notes
     private final static String url = "http://seleniumplayground.vectordesign.gr/selector-playground/";
     private WebDriver webDriver;
     @Before

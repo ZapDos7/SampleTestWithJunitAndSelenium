@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DayOneTest {
-//1st day notes
 @Test
     public void helloWorldText1(){
     WebDriverManager.chromedriver().setup();
