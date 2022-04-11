@@ -40,6 +40,7 @@ public class TestAssignmentClass {
     @Test
     public void searchTest() {
         TutorialsPointPage tutorialsPointPageObject = PageFactory.initElements(driver, TutorialsPointPage.class);
+        driver.manage()..window().maximize();
         tutorialsPointPageObject.search(SEARCH_TERM);
         tutorialsPointPageObject.click();
 
