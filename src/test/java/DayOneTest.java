@@ -9,10 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class DayOneTest {
 @Test
     public void helloWorldText1(){
-    WebDriverManager.chromedriver().setup();
-    WebDriver driver = new ChromeDriver();
-    driver.get("http://www.google.com");
-   Assert.assertEquals("Google gdfshsdfgh", driver.getTitle());
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://www.google.com");
+        Assert.assertEquals("Google gdfshsdfgh", driver.getTitle());
     }
 
     @Test
@@ -57,8 +57,7 @@ public class DayOneTest {
         WebDriver driver = new ChromeDriver();
         driver.get("http://www.google.com");
         login(driver);
-       driver.get("asdfg");
-
+        driver.get("asdfg");
     }
 
 }

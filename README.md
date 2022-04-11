@@ -30,3 +30,4 @@ Instructor: [T. Lagonikas](https://www.linkedin.com/in/theodore-lagonikas/?trk=o
 - Better organisation with `packageobjects` POM classes: We use the same `findBy` means to get an item from our HTML page, however this is more volatile: in case the element is renamed in the HTML code, we need only change the corresponding annotation in our `packageobjects` class.
 - It is best to use `@Before` and `@After` above methods in order to define functionality done before and after each test session.
 - In larger test sessions especially, it is crucial to `webDriver.quit();` in order to ease the load of the testing machine.
+- Method `close()` does not shut down the entire testing process, `quit()` quits the entire process

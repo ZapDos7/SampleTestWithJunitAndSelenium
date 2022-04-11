@@ -20,7 +20,6 @@ public class DayTwoTest {
 
     @After
     public void finish() {
-        //method `close()` does not shut down the entire testing process, `quit()` quits the entire process
         webDriver.quit();
     }
 

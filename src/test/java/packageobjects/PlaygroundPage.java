@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PlaygroundPage {
-    //day 2
-
     @FindBy(id = "id-playground-field")
     private WebElement idTextField;
 
