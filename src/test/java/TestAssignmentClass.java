@@ -40,7 +40,7 @@ public class TestAssignmentClass {
     @Test
     public void searchTest() {
         TutorialsPointPage tutorialsPointPageObject = PageFactory.initElements(driver, TutorialsPointPage.class);
-        driver.manage()..window().maximize();
+        driver.manage().window().maximize(); //.fullscreen() doesn't work properly in Chrome, but works in FireFox
         tutorialsPointPageObject.search(SEARCH_TERM);
         tutorialsPointPageObject.click();
 
