@@ -45,7 +45,8 @@ public class TestAssignmentClass {
         tutorialsPointPageObject.click();
 
         Assert.assertTrue(tutorialsPointPageObject.getSearchText().contains(SEARCH_TERM));
-        Assert.assertEquals(2*times, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
+        //Assert.assertEquals(2*times, tutorialsPointPageObject.getLoadText().chars().filter(ch -> ch == '€').count());
+        //this test will fail when the UI changes and the euro sign is displayed more than twice per item in the grid, so we should not use this as a test
         Assert.assertEquals(tutorialsPointPageObject.getGridSize(), times);
     }
 }
